@@ -1,5 +1,7 @@
 import { login, logout, getUserInfo } from '@/api/user'
 import { setToken, getToken } from '@/libs/util'
+import iView from 'iview'
+
 
 export default {
   state: {
@@ -41,6 +43,13 @@ export default {
           password
         }).then(res => {
           const data = res.data
+          if (data.code === 150) {
+            iView.Message.error({
+              content: `用户 ${userName} 不存在`,
+              duration: 2
+            });
+            reject(`用户 ${userName} 不存在`);
+          }
           commit('setToken', data.token)
           resolve()
         }).catch(err => {

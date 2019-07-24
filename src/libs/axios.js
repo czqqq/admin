@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
+import qs from 'qs'
 // import { Spin } from 'iview'
 const addErrorLog = errorInfo => {
   const { statusText, status, request: { responseURL } } = errorInfo
@@ -20,6 +21,14 @@ class HttpRequest {
   getInsideConfig () {
     const config = {
       baseURL: this.baseUrl,
+      transformRequest: [function (data) {
+        // data['src'] = 'dev'
+        if (data instanceof FormData) {
+          return data
+        }
+        data = qs.stringify(data)
+        return data
+      }],
       headers: {
         //
       }

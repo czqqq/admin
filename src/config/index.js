@@ -12,9 +12,10 @@ export default {
   /**
    * @description api请求基础路径
    */
+  // vue.config.js 中设置了代理，这边设置成 ''
   baseUrl: {
-    dev: 'http://localhost:8008/',
-    pro: 'http://localhost:8008/'
+    dev: '',
+    pro: ''
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home

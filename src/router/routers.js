@@ -137,7 +137,7 @@ export default [
         component: () => import('@/view/excel/export-excel.vue')
       }
     ]
-  },
+  }/*,
   {
     path: '/401',
     name: 'error_401',
@@ -161,5 +161,5 @@ export default [
       hideInMenu: false
     },
     component: () => import('@/view/error-page/404.vue')
-  }
+  } */
 ]
