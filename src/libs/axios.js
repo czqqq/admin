@@ -56,7 +56,27 @@ class HttpRequest {
     // 响应拦截
     instance.interceptors.response.use(res => {
       this.destroy(url)
-      const { data, status } = res
+      let d = res.data
+      let code = d.code
+      let msg = d.msg
+      while (d.data) {
+        d = d.data
+        if (d.code) {
+          code = d.code
+        }
+        if (d.msg) {
+          msg = d.msg
+        }
+      }
+
+      d.code = code
+      d.msg = msg
+
+      const resp = {
+        data: d,
+        status: res.status
+      }
+      const { data, status } = resp
       return { data, status }
     }, error => {
       this.destroy(url)
