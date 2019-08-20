@@ -34,6 +34,7 @@
 </template>
 <script>
 import excel from '@/libs/excel'
+import { doUploadExcel } from '@/api/excel'
 export default {
   name: 'upload-excel',
   data () {
@@ -66,7 +67,9 @@ export default {
     handleBeforeUpload (file) {
       const fileExt = file.name.split('.').pop().toLocaleLowerCase()
       if (fileExt === 'xlsx' || fileExt === 'xls') {
-        this.readFile(file)
+        // this.readFile(file)
+          debugger;
+          doUploadExcel(file);
         this.file = file
       } else {
         this.$Notice.warning({
@@ -79,7 +82,6 @@ export default {
     // 读取文件
     readFile (file) {
       const reader = new FileReader()
-      debugger
       reader.readAsArrayBuffer(file)
       reader.onloadstart = e => {
         this.uploadLoading = true

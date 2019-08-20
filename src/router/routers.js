@@ -110,7 +110,7 @@ export default [
     ]
   },
   {
-    path: '/excel',
+    path: '',
     name: 'excel',
     meta: {
       icon: 'ios-stats',
