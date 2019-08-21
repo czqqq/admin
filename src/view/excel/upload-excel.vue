@@ -68,9 +68,8 @@ export default {
       const fileExt = file.name.split('.').pop().toLocaleLowerCase()
       if (fileExt === 'xlsx' || fileExt === 'xls') {
         // this.readFile(file)
-          debugger;
-          doUploadExcel(file);
         this.file = file
+        doUploadExcel(file)
       } else {
         this.$Notice.warning({
           title: '文件类型错误',
