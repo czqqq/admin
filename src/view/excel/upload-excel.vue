@@ -3,6 +3,9 @@
 </style>
 <template>
   <div>
+    <Card title="生成Word">
+      <Button @click="handleGenerateWord">生成Word</Button>
+    </Card>
     <Card title="导入EXCEL">
       <Row>
         <Upload action="" :before-upload="handleBeforeUpload" accept=".xls, .xlsx">
@@ -35,6 +38,8 @@
 <script>
 import excel from '@/libs/excel'
 import { doUploadExcel } from '@/api/excel'
+import { generate } from '@/api/word'
+
 export default {
   name: 'upload-excel',
   data () {
@@ -50,6 +55,9 @@ export default {
     }
   },
   methods: {
+    handleGenerateWord () {
+      generate()
+    },
     initUpload () {
       this.file = null
       this.showProgress = false
